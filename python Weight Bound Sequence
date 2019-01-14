@@ -1,0 +1,9 @@
+start = int(input("Start number: "))
+mWeight = int(input("Weight bound: "))
+
+def countWeight(nums):
+  total = 0
+  for i in nums:
+    total += len(str(i))
+  return total
+  
