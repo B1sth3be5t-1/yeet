@@ -1,9 +1,30 @@
 start = int(input("Start number: "))
 mWeight = int(input("Weight bound: "))
 
+final = [start,]
+
 def countWeight(nums):
   total = 0
   for i in nums:
     total += len(str(i))
   return total
-  
+
+
+def addNumber(nums, tweight):
+  lastNum = nums[-1]
+  newNum = lastNum+1
+  if countWeight(nums) + len(str(newNum)) <= tweight:
+    nums.append(newNum)
+    done = False
+  else:
+    done = True
+  return nums,done
+
+keepGoing = True
+while keepGoing == True:
+  if addNumber(final, mWeight)[1] == False:
+    addNumber(final, mWeight)
+  else:
+    break
+
+print("The sequence (%d-%d) has weight %d" % (final[0],final[-1],countWeight(final)))
